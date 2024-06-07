@@ -46,6 +46,24 @@ Best of luck, Yours Truly Kaea.
 ''')
 
 
+def int_check(question):
+    while True:
+        error = "Please enter an integer that is 1 or  more. "
+
+        to_check = input(question)
+
+        try:
+            response = int(to_check)
+
+            # checks that the number is more than / equal to 1
+            if response < 1:
+                print(error)
+            else:
+                return response
+        except ValueError:
+            print(error)
+
+
 # A function to generate a random linear equation
 # Numbers that generate (randomly) are between 1 - 10
 def generate_question():
@@ -88,11 +106,12 @@ def question_answer_output():
             if user_answer == correct_answer:
                 print("Correct!")
                 score += 1
-                game_history.append(f"Question {i + 1}: Correct")
+                game_history.append(f"Question {i + 1}: {equation}. You answered this question correctly!")
             else:
                 # If the answer is incorrect, print the correct answer
                 print(f"Incorrect. The correct answer is {correct_answer}.")
-                game_history.append(f"Question {i + 1}: Incorrect")
+                game_history.append(f"Question {i + 1}: {equation}. Correct answer : {correct_answer}. You answered "
+                                    f"with {user_answer}")
         except ValueError:
             # If conversion fails, print an error message
             print("Invalid input. Please enter an integer.")
@@ -117,23 +136,11 @@ if want_instructions == "yes":
 score, game_history = question_answer_output()
 all_scores = [score]
 
-# Calculate statistics
-all_scores.sort()
-correct_score = all_scores[0]
-wrong_score = all_scores[-1]
-average_score = sum(all_scores) / len(all_scores)
-
-# Output the statistics
-print("\n📊📊📊 Statistics 📊📊📊")
-print("Here are your statistics on whether you've answered the questions given to you correct or wrong."
-      f"\nCorrect: {correct_score} | Wrong: {wrong_score} | Average score: {average_score:.2f}")
-print()
-
 # Display the game history on request
-see_history = yes_no("Do you want to see your game history? ")
+see_history = yes_no("Do you want to see your quiz history? ")
 if see_history == "yes":
     for item in game_history:
         print(item)
 
 # End of my game! (A little note to add onto the end)
-print("Thank you for you attending my quiz, have an amazing day!")
+print("Thank you for you playing my quiz, have an amazing day!")
