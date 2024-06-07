@@ -23,10 +23,10 @@ def instructions():
     print('''
 **** Instructions **** 
 
-To start begin with, choose the number of questions you would like
+To begin with, choose the number of questions you would like
 to be asked. This quiz does not have the option to either have
 0 rounds (which will automatically end the game) or neither has
-infinity, so no exit code will be implied too.
+infinity, so an exit code is not allowed too.
 
 The quiz is filled with randomized linear math equations. No questions
 in this quiz are equal to a negative number or a decimal place, so
